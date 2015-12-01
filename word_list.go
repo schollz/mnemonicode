@@ -1,5 +1,6 @@
 package mnemonicode
 
+// The version of compiled in word list.
 const WordListVersion = "0.7"
 
 var wordMap = make(map[string]int, len(wordList))

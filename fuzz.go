@@ -17,7 +17,7 @@ var (
 	tencdec = transform.Chain(tenc, tdec)
 )
 
-// For use with go-fuzz, "github.com/dvyukov/go-fuzz"
+// Fuzz is for use with go-fuzz, "github.com/dvyukov/go-fuzz"
 func Fuzz(data []byte) int {
 	words := EncodeWordList(nil, data)
 	if len(words) != WordsRequired(len(data)) {
