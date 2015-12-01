@@ -1,7 +1,26 @@
+Mnemonicode 
+===========
+
 Mnemonicode is a method for encoding binary data into a sequence
 of words which can be spoken over the phone, for example, and converted
 back to data on the other side.
 
+[![GoDoc](https://godoc.org/bitbucket.org/dchapes/mnemonicode?status.png)](https://godoc.org/bitbucket.org/dchapes/mnemonicode)
+
+Online package documentation is available via
+[https://godoc.org/bitbucket.org/dchapes/mnemonicode](https://godoc.org/bitbucket.org/dchapes/mnemonicode).
+
+To install the package:
+
+		go get bitbucket.org/dchapes/mnemonicode
+
+or the command line programs:
+
+		go get bitbucket.org/dchapes/mnemonicode/cmd/...
+
+or `go build` any Go code that imports it:
+
+		import "bitbucket.org/dchapes/mnemonicode"
 
 For more information see
 <https://github.com/singpolyma/mnemonicode>
