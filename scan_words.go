@@ -7,10 +7,10 @@ import (
 
 // modified version of bufio.ScanWords from bufio/scan.go
 
-// scanWords is a split function for a Scanner that returns each
-// space-separated word of text, with surrounding non-leters deleted. It
-// will never return an empty string. The definition of letter is set by
-// unicode.IsLetter.
+// scanWords is a split function for a Scanner that returns
+// each non-letter separated word of text, with surrounding
+// non-leters deleted. It will never return an empty string.
+// The definition of letter is set by unicode.IsLetter.
 func scanWords(data []byte, atEOF bool) (advance int, token []byte, err error) {
 	// Skip leading non-letters.
 	start := 0
