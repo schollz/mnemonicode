@@ -308,6 +308,28 @@ func (t *dectrans) transformWords(dst []byte) (int, error) {
 	return n, nil
 }
 
+type WordError interface {
+	error
+	Word() string
+}
+
+type UnexpectedWordError string
+type UnexpectedEndWordError string
+type UnknownWordError string
+
+func (e UnexpectedWordError) Word() string    { return string(e) }
+func (e UnexpectedEndWordError) Word() string { return string(e) }
+func (e UnknownWordError) Word() string       { return string(e) }
+func (e UnexpectedWordError) Error() string {
+	return fmt.Sprintf("mnemonicode: unexpected word after short word: %q", string(e))
+}
+func (e UnexpectedEndWordError) Error() string {
+	return fmt.Sprintf("mnemonicode: unexpected end word: %q", string(e))
+}
+func (e UnknownWordError) Error() string {
+	return fmt.Sprintf("mnemonicode: unknown word: %q", string(e))
+}
+
 // Transform implements the transform.Transformer interface.
 func (t *dectrans) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err error) {
 	//log.Printf("Transform(%d,%d,%t)\n", len(dst), len(src), atEOF)
@@ -337,7 +359,7 @@ func (t *dectrans) Transform(dst, src []byte, atEOF bool) (nDst, nSrc int, err e
 				return
 			}
 			if t.short {
-				err = fmt.Errorf("mnemonicode: unexpected word after short word: %q", string(word))
+				err = UnexpectedWordError(word)
 				//log.Print("short error:", err)
 				return
 			}
@@ -420,13 +442,13 @@ func closestWordIdx(word string, shortok bool) (idx int, exact, short bool, err 
 		// TODO normalize unicode, remove accents, etc
 		// TODO phonetic algorithm or other closest match
 		// return idx, false, nil
-		err = fmt.Errorf("mnemonicode: unknown word %q", word)
+		err = UnknownWordError(word)
 		return
 	}
 	if short = (idx >= base); short {
 		idx -= base
 		if !shortok {
-			err = fmt.Errorf("mnemonicode: unexpected end word %q", word)
+			err = UnexpectedEndWordError(word)
 		}
 	}
 	return
@@ -504,7 +526,7 @@ func DecodeWordList(dst []byte, src []string) (result []byte, err error) {
 				}
 				if idx[i] >= base {
 					if i != 2 || len(src) != 3 {
-						return nil, fmt.Errorf("mnemonicode: unexpected end word %q", src[i])
+						return nil, UnexpectedEndWord(src[i])
 					}
 					short = true
 					idx[i] -= base
