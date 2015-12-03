@@ -75,7 +75,7 @@ func main() {
 		vlog.SetOutput(ioutil.Discard)
 	}
 
-	config.LinePrefix = string(prefix).Get().(string)
+	config.LinePrefix = prefix.Get().(string)
 	config.LineSuffix = suffix.Get().(string)
 	config.GroupSeparator = groupsep.Get().(string)
 	config.WordSeparator = wordsep.Get().(string)
