@@ -80,9 +80,10 @@ func TestEncodeWordList(t *testing.T) {
 
 func TestDecodeWordList(t *testing.T) {
 	var result []byte
+	var err error
 	for i, d := range testData {
 		raw, _ := hex.DecodeString(d.hex)
-		result, err := DecodeWordList(result, d.words)
+		result, err = DecodeWordList(result, d.words)
 		if err != nil {
 			t.Errorf("%2d %v failed: %v", i, d.words, err)
 			continue
