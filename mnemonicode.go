@@ -260,7 +260,7 @@ func NewDecoder(r io.Reader) io.Reader {
 // NewDecodeWriter returns a new io.WriteCloser that will
 // write decoded bytes from mnemonic words written to it.
 // Unrecognized words will cause a write error. The user needs
-// to call Close to flush unwritten bytes that be buffered.
+// to call Close to flush unwritten bytes that may be buffered.
 func NewDecodeWriter(w io.Writer) io.WriteCloser {
 	t := NewDecodeTransformer()
 	return transform.NewWriter(w, t)
@@ -439,9 +439,8 @@ func EncodeWordList(dst []string, src []byte) (result []string) {
 func closestWordIdx(word string, shortok bool) (idx int, exact, short bool, err error) {
 	word = strings.ToLower(word)
 	if idx, exact = wordMap[word]; !exact {
-		// TODO normalize unicode, remove accents, etc
-		// TODO phonetic algorithm or other closest match
-		// return idx, false, nil
+		// TODO(dchapes): normalize unicode, remove accents, etc
+		// TODO(dchapes): phonetic algorithm or other closest match
 		err = UnknownWordError(word)
 		return
 	}
