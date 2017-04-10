@@ -23,7 +23,7 @@ func (h *hexdump) Write(data []byte) (n int, err error) {
 			amt = hex.DecodedLen(bufsize)
 		}
 		nn := hex.Encode(h.buf[:], data[n:n+amt])
-		nn, err := h.w.Write(h.buf[:nn])
+		_, err := h.w.Write(h.buf[:nn])
 		n += amt
 		if err != nil {
 			return n, err
