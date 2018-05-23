@@ -7,7 +7,7 @@ import (
 	"os"
 	"path"
 
-	"bitbucket.org/dchapes/mnemonicode"
+	"github.com/schollz/mnemonicode"
 )
 
 func main() {

@@ -10,9 +10,8 @@ import (
 	"path"
 	"strconv"
 
+	"github.com/schollz/mnemonicode"
 	"golang.org/x/text/transform"
-
-	"bitbucket.org/dchapes/mnemonicode"
 )
 
 type quoted string

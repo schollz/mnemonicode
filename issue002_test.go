@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"bitbucket.org/dchapes/mnemonicode"
+	"github.com/schollz/mnemonicode"
 )
 
 func TestIssue002(t *testing.T) {
@@ -27,13 +27,12 @@ func TestIssue002(t *testing.T) {
 	io.Copy(buf, r)
 
 	// Note, in the issue the expected trailing newline is missing.
-	const expected = ` bogart
+	const expected = `bogart
 atlas
 safari
 airport
 cabaret
-shock
-`
+shock`
 	if s := buf.String(); s != expected {
 		t.Errorf("%v\n\tgave %q\n\twant%q", issue, s, expected)
 	}
