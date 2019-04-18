@@ -3,17 +3,17 @@ package mnemonicode
 // WordListVersion is the version of compiled in word list.
 const WordListVersion = "0.7"
 
-var wordMap = make(map[string]int, len(wordList))
+var wordMap = make(map[string]int, len(WordList))
 
 func init() {
-	for i, w := range wordList {
+	for i, w := range WordList {
 		wordMap[w] = i
 	}
 }
 
 const longestWord = 7
 
-var wordList = []string{
+var WordList = []string{
 	"academy", "acrobat", "active", "actor", "adam", "admiral",
 	"adrian", "africa", "agenda", "agent", "airline", "airport",
 	"aladdin", "alarm", "alaska", "albert", "albino", "album",

@@ -170,7 +170,7 @@ func TestEncodeFormatting(t *testing.T) {
 
 func BenchmarkEncodeWordList(b *testing.B) {
 	// the list of all known words (except the short end words)
-	data, err := DecodeWordList(nil, wordList[:base])
+	data, err := DecodeWordList(nil, WordList[:base])
 	if err != nil {
 		b.Fatal("DecodeWordList failed:", err)
 	}
@@ -189,7 +189,7 @@ func BenchmarkDencodeWordList(b *testing.B) {
 	var err error
 	// decode the list of all known words (except the short end words)
 	for i := 0; i < b.N; i++ {
-		buf, err = DecodeWordList(buf[:0], wordList[:base])
+		buf, err = DecodeWordList(buf[:0], WordList[:base])
 		if err != nil {
 			b.Fatal("DecodeWordList failed:", err)
 		}
@@ -199,7 +199,7 @@ func BenchmarkDencodeWordList(b *testing.B) {
 
 func BenchmarkEncodeTransformer(b *testing.B) {
 	// the list of all known words (except the short end words)
-	data, err := DecodeWordList(nil, wordList[:base])
+	data, err := DecodeWordList(nil, WordList[:base])
 	if err != nil {
 		b.Fatal("DecodeWordList failed:", err)
 	}
@@ -216,7 +216,7 @@ func BenchmarkEncodeTransformer(b *testing.B) {
 }
 
 func BenchmarkDecodeTransformer(b *testing.B) {
-	data, err := DecodeWordList(nil, wordList[:base])
+	data, err := DecodeWordList(nil, WordList[:base])
 	if err != nil {
 		b.Fatal("DecodeWordList failed:", err)
 	}
