@@ -161,7 +161,7 @@ func (t *enctrans) transformWords(dst []byte) (nDst int, err error) {
 			nDst += n
 			t.state = nextState
 		}
-		word := wordList[t.wordidx[3-t.wordidxcnt]]
+		word := WordList[t.wordidx[3-t.wordidxcnt]]
 		n := len(word)
 		if n < longestWord {
 			if rlen := utf8.RuneLen(t.c.WordPadding); rlen > 0 {
@@ -413,7 +413,7 @@ func EncodeWordList(dst []string, src []byte) (result []string) {
 		i0 := int(x % base)
 		i1 := int(x/base) % base
 		i2 := int(x/base/base) % base
-		result = append(result, wordList[i0], wordList[i1], wordList[i2])
+		result = append(result, WordList[i0], WordList[i1], WordList[i2])
 	}
 	if len(src) > 0 {
 		x = 0
@@ -422,14 +422,14 @@ func EncodeWordList(dst []string, src []byte) (result []string) {
 			x |= uint32(src[i])
 		}
 		i := int(x % base)
-		result = append(result, wordList[i])
+		result = append(result, WordList[i])
 		if len(src) >= 2 {
 			i = int(x/base) % base
-			result = append(result, wordList[i])
+			result = append(result, WordList[i])
 		}
 		if len(src) == 3 {
 			i = base + int(x/base/base)%7
-			result = append(result, wordList[i])
+			result = append(result, WordList[i])
 		}
 	}
 
