@@ -226,7 +226,7 @@ var WordList = []string{
 	"alias", "ambient", "andy", "anvil", "appear", "apropos",
 	"archer", "ariel", "armor", "arrow", "austin", "avatar",
 	"axis", "baboon", "bahama", "bali", "balsa", "bazooka",
-	"beach", "beast", "beatles", "beauty", "before", "benny",
+	"beach", "beast", "beauty", "beetle", "before", "benny",
 	"betty", "between", "beyond", "billy", "bison", "blast",
 	"bless", "bogart", "bonanza", "book", "border", "brave",
 	"bread", "break", "broken", "bucket", "buenos", "buffalo",
